@@ -21,8 +21,15 @@ Before writing any code:
 - Write only enough test code to fail
 - Use descriptive test names explaining expected behavior
 - Follow Arrange-Act-Assert pattern
-- **CRITICAL**: Run the test and verify it fails for the right reason
-- The test should fail because functionality doesn't exist yet
+- **CRITICAL: Run the test and verify it fails for the right reason:**
+  - The test should fail due to incorrect or missing behavior in the implementation (e.g., wrong return value, unimplemented logic).
+  - The test should **not** fail due to compilation errors, missing imports, reference errors, or typos.
+  - If a method is not yet implemented, it should explicitly throw:
+    ```typescript
+    throw new Error('Method not implemented');
+    ```
+  - This ensures the test fails for a clear, behavioral reason, not a compilation or reference error.
+- The test should fail because functionality doesn't exist yet or is not implemented
 - If test passes unexpectedly, investigate why
 
 ### 3. GREEN Phase - Make Test Pass
@@ -147,4 +154,4 @@ class StringCalculator {
 - Verify each phase before moving to the next
 - Use baby steps and minimal implementations
 - Focus on one test case at a time
-- Document test cases before starting implementation 
+- Document test cases before starting implementation
