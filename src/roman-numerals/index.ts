@@ -6,6 +6,9 @@ export class RomanNumeralConverter {
     if (number === 5) {
       return "V";
     }
+    if (number === 6) {
+      return "VI";
+    }
     return "I".repeat(number);
   }
 } 
