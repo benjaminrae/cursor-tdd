@@ -6,14 +6,8 @@ export class RomanNumeralConverter {
     if (number === 0) {
       return "";
     }
-    if (number === 5) {
-      return RomanNumeralConverter.V;
-    }
-    if (number === 6) {
-      return RomanNumeralConverter.V + RomanNumeralConverter.I;
-    }
-    if (number === 7) {
-      return RomanNumeralConverter.V + RomanNumeralConverter.I + RomanNumeralConverter.I;
+    if (number >= 5) {
+      return RomanNumeralConverter.V + RomanNumeralConverter.I.repeat(number - 5);
     }
     return RomanNumeralConverter.I.repeat(number);
   }
