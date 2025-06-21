@@ -3,19 +3,24 @@ export class RomanNumeralConverter {
   private static readonly V = "V";
   private static readonly X = "X";
 
+  private static readonly romanMappings: Record<number, string> = {
+    10: "X",
+    5: "V",
+    4: "IV",
+    1: "I"
+  };
+
   public toRoman(number: number): string {
     if (number === 0) {
       return "";
     }
-    if (number >= 10) {
-      return RomanNumeralConverter.X + this.toRoman(number - 10);
+    
+    for (const decimal of Object.keys(RomanNumeralConverter.romanMappings).map(Number).sort((a, b) => b - a)) {
+      if (number >= decimal) {
+        return RomanNumeralConverter.romanMappings[decimal] + this.toRoman(number - decimal);
+      }
     }
-    if (number >= 5) {
-      return RomanNumeralConverter.V + this.toRoman(number - 5);
-    }
-    if (number === 4) {
-      return "IV";
-    }
-    return RomanNumeralConverter.I.repeat(number);
+    
+    return "";
   }
 } 
