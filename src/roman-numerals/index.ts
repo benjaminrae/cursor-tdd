@@ -13,6 +13,9 @@ export class RomanNumeralConverter {
     if (number >= 5) {
       return RomanNumeralConverter.V + this.toRoman(number - 5);
     }
+    if (number === 4) {
+      return "IV";
+    }
     return RomanNumeralConverter.I.repeat(number);
   }
 } 
