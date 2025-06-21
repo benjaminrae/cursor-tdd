@@ -3,6 +3,6 @@ export class RomanNumeralConverter {
     if (number === 0) {
       return "";
     }
-    return "I";
+    return "I".repeat(number);
   }
 } 
