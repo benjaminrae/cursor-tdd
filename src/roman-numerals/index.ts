@@ -9,7 +9,7 @@ export class RomanNumeralConverter {
   private static getSortedDecimals(): number[] {
     return Object.keys(RomanNumeralConverter.romanMappings)
       .map(Number)
-      .sort((a, b) => b - a);
+      .sort((first, second) => second - first);
   }
 
   public toRoman(number: number): string {
