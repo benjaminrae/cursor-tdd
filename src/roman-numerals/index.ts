@@ -7,14 +7,8 @@ export class RomanNumeralConverter {
     if (number === 0) {
       return "";
     }
-    if (number === 15) {
-      return RomanNumeralConverter.X + RomanNumeralConverter.V;
-    }
-    if (number === 16) {
-      return RomanNumeralConverter.X + RomanNumeralConverter.V + RomanNumeralConverter.I;
-    }
-    if (number === 17) {
-      return RomanNumeralConverter.X + RomanNumeralConverter.V + RomanNumeralConverter.I + RomanNumeralConverter.I;
+    if (number >= 15) {
+      return RomanNumeralConverter.X + RomanNumeralConverter.V + RomanNumeralConverter.I.repeat(number - 15);
     }
     if (number >= 10) {
       return RomanNumeralConverter.X + RomanNumeralConverter.I.repeat(number - 10);
