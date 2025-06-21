@@ -16,12 +16,12 @@ Convert integers to Roman numeral strings. The function should take an integer (
 ### Phase 2: Single Items (Basic Numbers 1-10)
 - [x] 1 → "I"
 - [x] 2 → "II"
-- [ ] 3 → "III"
+- [x] 3 → "III"
 - [ ] 4 → "IV"
 - [x] 5 → "V"
 - [x] 6 → "VI"
 - [x] 7 → "VII"
-- [ ] 8 → "VIII"
+- [x] 8 → "VIII"
 - [ ] 9 → "IX"
 - [ ] 10 → "X"
 
