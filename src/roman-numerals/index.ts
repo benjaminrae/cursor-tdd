@@ -8,13 +8,13 @@ export class RomanNumeralConverter {
       return "";
     }
     if (number >= 15) {
-      return RomanNumeralConverter.X + RomanNumeralConverter.V + RomanNumeralConverter.I.repeat(number - 15);
+      return RomanNumeralConverter.X + RomanNumeralConverter.V + this.toRoman(number - 15);
     }
     if (number >= 10) {
-      return RomanNumeralConverter.X + RomanNumeralConverter.I.repeat(number - 10);
+      return RomanNumeralConverter.X + this.toRoman(number - 10);
     }
     if (number >= 5) {
-      return RomanNumeralConverter.V + RomanNumeralConverter.I.repeat(number - 5);
+      return RomanNumeralConverter.V + this.toRoman(number - 5);
     }
     return RomanNumeralConverter.I.repeat(number);
   }
