@@ -36,6 +36,7 @@ Before writing any code:
 - Write the absolute minimum code to make the test pass
 - Use the simplest possible implementation
 - Don't worry about code quality yet
+- **Do not write any production code that is not covered by tests**
 - **Use "Fake It" when appropriate:**
   - Sometimes the simplest implementation is to return the exact expected value
   - This is often simpler than adding conditional logic
