@@ -200,3 +200,15 @@ class StringCalculator {
 - Focus on one test case at a time
 - Document test cases before starting implementation
 - Use triangulation to choose the next test case
+
+## Refactoring Heuristics
+
+### Three Strikes Rule
+- Only refactor duplication after it appears three times
+- This helps avoid premature abstraction and ensures refactoring is based on real, repeated patterns
+- Wait for the third occurrence of similar code before extracting a method, class, or abstraction
+- This gives you more context and leads to better, more stable designs
+
+### Example
+- If you see the same logic or code in three places, refactor it into a shared function or abstraction
+- If you only see it in two places, wait for a third before refactoring
