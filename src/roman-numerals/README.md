@@ -23,7 +23,7 @@ Convert integers to Roman numeral strings. The function should take an integer (
 - [x] 7 → "VII"
 - [x] 8 → "VIII"
 - [ ] 9 → "IX"
-- [ ] 10 → "X"
+- [x] 10 → "X"
 
 ### Phase 3: Multiple Items (Teens and Beyond)
 - [ ] 11 → "XI"
