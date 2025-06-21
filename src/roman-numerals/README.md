@@ -14,8 +14,8 @@ Convert integers to Roman numeral strings. The function should take an integer (
 - [x] 0 → "" (empty string for zero)
 
 ### Phase 2: Single Items (Basic Numbers 1-10)
-- [ ] 1 → "I"
-- [ ] 2 → "II"
+- [x] 1 → "I"
+- [x] 2 → "II"
 - [ ] 3 → "III"
 - [ ] 4 → "IV"
 - [ ] 5 → "V"
