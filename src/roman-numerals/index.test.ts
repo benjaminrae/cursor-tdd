@@ -1,40 +1,43 @@
-import { describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { RomanNumeralConverter } from './index';
 
 describe('RomanNumeralConverter', () => {
+  let converter: RomanNumeralConverter;
+
+  beforeEach(() => {
+    converter = new RomanNumeralConverter();
+  });
+
   it('should return empty string for zero', () => {
-    // Arrange - Set up test data and conditions
-    const converter = new RomanNumeralConverter();
+    // Arrange
     const input = 0;
     
-    // Act - Execute the code under test
+    // Act
     const result = converter.toRoman(input);
     
-    // Assert - Verify the expected outcome
+    // Assert
     expect(result).toBe("");
   });
 
   it('should return "I" for one', () => {
-    // Arrange - Set up test data and conditions
-    const converter = new RomanNumeralConverter();
+    // Arrange
     const input = 1;
     
-    // Act - Execute the code under test
+    // Act
     const result = converter.toRoman(input);
     
-    // Assert - Verify the expected outcome
+    // Assert
     expect(result).toBe("I");
   });
 
   it('should return "II" for two', () => {
-    // Arrange - Set up test data and conditions
-    const converter = new RomanNumeralConverter();
+    // Arrange
     const input = 2;
     
-    // Act - Execute the code under test
+    // Act
     const result = converter.toRoman(input);
     
-    // Assert - Verify the expected outcome
+    // Assert
     expect(result).toBe("II");
   });
 }); 
