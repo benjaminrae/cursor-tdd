@@ -16,7 +16,8 @@ describe('RomanNumeralConverter', () => {
     [5, "V"],
     [6, "VI"],
     [7, "VII"],
-    [8, "VIII"]
+    [8, "VIII"],
+    [10, "X"]
   ])('should return "%s" for %i', (input, expected) => {
     // Act
     const result = converter.toRoman(input);
