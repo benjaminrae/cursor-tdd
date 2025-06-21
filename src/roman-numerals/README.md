@@ -11,7 +11,7 @@ Convert integers to Roman numeral strings. The function should take an integer (
 ## Test Cases (Prioritized by TDD Rules)
 
 ### Phase 1: Empty/Zero Cases (Start Here)
-- [ ] 0 → "" (empty string for zero)
+- [x] 0 → "" (empty string for zero)
 
 ### Phase 2: Single Items (Basic Numbers 1-10)
 - [ ] 1 → "I"
