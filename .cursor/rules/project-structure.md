@@ -37,14 +37,8 @@ In the README.md, list all test cases before starting:
 - Follow RED-GREEN-REFACTOR for each test
 - Update the checklist as you complete each test
 
-## File Naming Conventions
-- Use kebab-case for folder names: `string-calculator`, `fizz-buzz`
-- Use `index.ts` for main production code file
-- Use `index.test.ts` for test files
-- Use `README.md` for documentation
-
 ## Project Organization
 - Keep each kata self-contained in its own folder
 - Maintain consistent structure across all katas
 - Use descriptive folder names that clearly indicate the kata
-- Document the purpose and requirements of each kata 
+- Document the purpose and requirements of each kata
