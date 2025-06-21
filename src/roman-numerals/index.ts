@@ -7,9 +7,6 @@ export class RomanNumeralConverter {
     if (number === 0) {
       return "";
     }
-    if (number >= 15) {
-      return RomanNumeralConverter.X + RomanNumeralConverter.V + this.toRoman(number - 15);
-    }
     if (number >= 10) {
       return RomanNumeralConverter.X + this.toRoman(number - 10);
     }
