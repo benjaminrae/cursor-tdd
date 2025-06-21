@@ -24,7 +24,8 @@ describe('RomanNumeralConverter', () => {
     [15, "XV"],
     [16, "XVI"],
     [17, "XVII"],
-    [18, "XVIII"]
+    [18, "XVIII"],
+    [20, "XX"]
   ])('should return "%s" for %i', (input, expected) => {
     // Act
     const result = converter.toRoman(input);
