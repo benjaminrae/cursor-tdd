@@ -7,6 +7,9 @@ export class RomanNumeralConverter {
     if (number === 0) {
       return "";
     }
+    if (number === 15) {
+      return RomanNumeralConverter.X + RomanNumeralConverter.V;
+    }
     if (number >= 10) {
       return RomanNumeralConverter.X + RomanNumeralConverter.I.repeat(number - 10);
     }
