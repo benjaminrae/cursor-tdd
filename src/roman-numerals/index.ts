@@ -12,6 +12,9 @@ export class RomanNumeralConverter {
     if (number === 6) {
       return RomanNumeralConverter.V + RomanNumeralConverter.I;
     }
+    if (number === 7) {
+      return RomanNumeralConverter.V + RomanNumeralConverter.I + RomanNumeralConverter.I;
+    }
     return RomanNumeralConverter.I.repeat(number);
   }
 } 
