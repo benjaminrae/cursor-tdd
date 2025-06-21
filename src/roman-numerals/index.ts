@@ -1,14 +1,17 @@
 export class RomanNumeralConverter {
+  private static readonly I = "I";
+  private static readonly V = "V";
+
   public toRoman(number: number): string {
     if (number === 0) {
       return "";
     }
     if (number === 5) {
-      return "V";
+      return RomanNumeralConverter.V;
     }
     if (number === 6) {
-      return "VI";
+      return RomanNumeralConverter.V + RomanNumeralConverter.I;
     }
-    return "I".repeat(number);
+    return RomanNumeralConverter.I.repeat(number);
   }
 } 
