@@ -63,6 +63,7 @@ Before writing any code:
 
 ### 4. REFACTOR Phase - Improve Code
 - Clean up the code for readability and maintainability
+- **Refactor both production code AND test code**
 - **NEVER add new functionality during refactoring**
 - **NEVER change external behavior**
 - Remove duplication, improve variable names, simplify expressions
