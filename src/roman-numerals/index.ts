@@ -6,12 +6,18 @@ export class RomanNumeralConverter {
     1: "I"
   };
 
+  private static getSortedDecimals(): number[] {
+    return Object.keys(RomanNumeralConverter.romanMappings)
+      .map(Number)
+      .sort((a, b) => b - a);
+  }
+
   public toRoman(number: number): string {
     if (number === 0) {
       return "";
     }
     
-    for (const decimal of Object.keys(RomanNumeralConverter.romanMappings).map(Number).sort((a, b) => b - a)) {
+    for (const decimal of RomanNumeralConverter.getSortedDecimals()) {
       if (number >= decimal) {
         return RomanNumeralConverter.romanMappings[decimal] + this.toRoman(number - decimal);
       }
