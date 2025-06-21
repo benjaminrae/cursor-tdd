@@ -36,6 +36,11 @@ Before writing any code:
 - Write the absolute minimum code to make the test pass
 - Use the simplest possible implementation
 - Don't worry about code quality yet
+- **Use "Fake It" when appropriate:**
+  - Sometimes the simplest implementation is to return the exact expected value
+  - This is often simpler than adding conditional logic
+  - Example: For test expecting `0 → ""`, just return `""` directly
+  - The next test case (via triangulation) will force you to make it more general
 - Examples of minimal implementations:
   ```typescript
   // For test expecting "Hello, World!"
@@ -47,6 +52,11 @@ Before writing any code:
   function sum(a: number, b: number): number {
     return 5; // Hard-coded to pass
   }
+  
+  // For test expecting 0 → ""
+  function toRoman(number: number): string {
+    return ""; // Fake it - return exact expected value
+  }
   ```
 - Verify the test passes and no other tests break
 
@@ -57,6 +67,36 @@ Before writing any code:
 - Remove duplication, improve variable names, simplify expressions
 - Run tests frequently during refactoring
 - If tests break, revert and try smaller steps
+
+## Triangulation and Choosing the Next Test Case
+
+### What is Triangulation?
+Triangulation is the practice of choosing the next test case that will force you to change the production code, moving away from hard-coded implementations toward more general solutions.
+
+### Choosing the Next Test Case
+- **Select a test that will fail with the current implementation**
+- **Choose the simplest test that requires a different behavior**
+- **Avoid tests that would pass with the current hard-coded solution**
+- **Use triangulation to drive the implementation toward generality**
+
+### When to Remove "Method not implemented"
+- Remove the error throw once you have a working implementation for the current test case
+- The next test case should fail because it requires different behavior, not because of the error throw
+- This ensures you're using triangulation to drive the design
+
+### Example of Triangulation
+```typescript
+// Test 1: 0 → ""
+// Implementation: if (number === 0) return "";
+
+// Test 2: 1 → "I" (chosen because it will fail with current implementation)
+// This forces us to handle the case where number === 1
+// Implementation: if (number === 0) return ""; if (number === 1) return "I";
+
+// Test 3: 2 → "II" (chosen because it will fail with current implementation)
+// This forces us to handle repetition
+// Implementation: if (number === 0) return ""; if (number === 1) return "I"; if (number === 2) return "II";
+```
 
 ## Implementation Guidelines
 
@@ -89,6 +129,7 @@ describe('Feature', () => {
 - ❌ Writing complex implementations in GREEN phase
 - ❌ Adding new functionality during REFACTOR phase
 - ❌ Ignoring failing tests
+- ❌ Choosing test cases that don't force code changes (no triangulation)
 
 ### What to Do Instead
 - ✅ Write one test at a time
@@ -97,6 +138,8 @@ describe('Feature', () => {
 - ✅ Focus only on refactoring in REFACTOR phase
 - ✅ Fix failing tests immediately
 - ✅ Write meaningful, specific tests
+- ✅ Use triangulation to choose the next test case
+- ✅ Remove "Method not implemented" once you have working code
 
 ## Example TDD Session
 
@@ -127,7 +170,7 @@ class StringCalculator {
 
 // REFACTOR Phase - No changes needed yet
 
-// RED Phase - Test 2
+// RED Phase - Test 2 (chosen via triangulation)
 it('should return the number for single number', () => {
   const calculator = new StringCalculator();
   expect(calculator.add('1')).toBe(1);
@@ -147,6 +190,7 @@ class StringCalculator {
 - **The goal is better code design, not just testing**
 - **Baby steps lead to better understanding and fewer bugs**
 - **Refactoring is where the real design happens**
+- **Triangulation drives the implementation toward generality**
 - **Trust the process - it works!**
 
 ## When Working Together
@@ -155,3 +199,4 @@ class StringCalculator {
 - Use baby steps and minimal implementations
 - Focus on one test case at a time
 - Document test cases before starting implementation
+- Use triangulation to choose the next test case
