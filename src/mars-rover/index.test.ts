@@ -17,4 +17,12 @@ describe('Mars Rover', () => {
     
     expect(result).toBe('0:1:N');
   });
+
+  it('moves twice north when given MM command', () => {
+    const rover = new MarsRover();
+    
+    const result = rover.execute('MM');
+    
+    expect(result).toBe('0:2:N');
+  });
 });
