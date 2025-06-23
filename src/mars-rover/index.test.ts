@@ -6,7 +6,8 @@ describe('Mars Rover', () => {
     ['', '0:0:N'],
     ['M', '0:1:N'],
     ['MM', '0:2:N'],
-    ['MMM', '0:3:N']
+    ['MMM', '0:3:N'],
+    ['MMMMMMMMMM', '0:0:N']
   ])('executes command "%s" and returns "%s"', (command, expected) => {
     const rover = new MarsRover();
 

@@ -8,6 +8,8 @@ export class MarsRover {
       }
     }
     
+    y = y % 10;
+    
     return `0:${y}:N`;
   }
 }

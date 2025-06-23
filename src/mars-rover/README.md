@@ -26,7 +26,7 @@ Develop an API that moves rovers around on a plateau on Mars. The plateau is rep
 - [x] Single "M" command moves north to "0:1:N"
 - [x] "MM" moves twice north to "0:2:N"
 - [x] "MMM" moves three times north to "0:3:N"
-- [ ] "MMMMMMMMMM" wraps around to "0:0:N" (10 moves)
+- [x] "MMMMMMMMMM" wraps around to "0:0:N" (10 moves)
 
 ### Phase 3: Left Rotation (L) - Complete This Second
 #### Empty → Single → Multiple
