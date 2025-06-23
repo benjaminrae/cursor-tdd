@@ -48,7 +48,7 @@ Develop an API that moves rovers around on a plateau on Mars. The plateau is rep
 - [x] "RM" moves east to "1:0:E"
 - [x] "LM" moves west to "9:0:W" (wrap-around)
 - [x] "RRM" moves south to "0:9:S" (wrap-around)
-- [ ] "LLM" moves south to "0:9:S" (wrap-around)
+- [x] "LLM" moves south to "0:9:S" (wrap-around)
 
 ### Phase 6: Complex Patterns (Combining different commands)
 - [ ] "MMRMMLM" gives "2:3:N" (from kata example)

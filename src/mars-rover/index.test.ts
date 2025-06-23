@@ -54,7 +54,8 @@ describe('Mars Rover', () => {
     it.each([
       ['RM', '1:0:E'],
       ['LM', '9:0:W'],
-      ['RRM', '0:9:S']
+      ['RRM', '0:9:S'],
+      ['LLM', '0:9:S']
     ])('executes "%s" and returns "%s"', (command, expected) => {
       const rover = new MarsRover(new Grid(), new North());
 
