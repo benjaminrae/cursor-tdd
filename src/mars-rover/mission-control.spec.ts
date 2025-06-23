@@ -6,7 +6,7 @@ import { Map } from './map';
 import { GPS } from './gps';
 import { NorthHeading } from './compass';
 
-describe('Mars Rover', () => {
+describe('Mission Control', () => {
   describe('Move commands', () => {
     it.each([
       ['', '0:0:N'],
@@ -14,7 +14,7 @@ describe('Mars Rover', () => {
       ['MM', '0:2:N'],
       ['MMM', '0:3:N'],
       ['MMMMMMMMMM', '0:0:N']
-    ])('executes "%s" and returns "%s"', (command, expected) => {
+    ])('sends command "%s" and returns "%s"', (command, expected) => {
       const rover = new MarsRover(new GPS(new Map()), new NorthHeading());
       const missionControl = new MissionControl(rover);
 
@@ -30,7 +30,7 @@ describe('Mars Rover', () => {
       ['LL', '0:0:S'],
       ['LLL', '0:0:E'],
       ['LLLL', '0:0:N']
-    ])('executes "%s" and returns "%s"', (command, expected) => {
+    ])('sends command "%s" and returns "%s"', (command, expected) => {
       const rover = new MarsRover(new GPS(new Map()), new NorthHeading());
       const missionControl = new MissionControl(rover);
 
@@ -46,7 +46,7 @@ describe('Mars Rover', () => {
       ['RR', '0:0:S'],
       ['RRR', '0:0:W'],
       ['RRRR', '0:0:N']
-    ])('executes "%s" and returns "%s"', (command, expected) => {
+    ])('sends command "%s" and returns "%s"', (command, expected) => {
       const rover = new MarsRover(new GPS(new Map()), new NorthHeading());
       const missionControl = new MissionControl(rover);
 
@@ -62,7 +62,7 @@ describe('Mars Rover', () => {
       ['LM', '9:0:W'],
       ['RRM', '0:9:S'],
       ['LLM', '0:9:S']
-    ])('executes "%s" and returns "%s"', (command, expected) => {
+    ])('sends command "%s" and returns "%s"', (command, expected) => {
       const rover = new MarsRover(new GPS(new Map()), new NorthHeading());
       const missionControl = new MissionControl(rover);
 
@@ -76,7 +76,7 @@ describe('Mars Rover', () => {
     it.each([
       ['MMRMMLM', '2:3:N'],
       ['RMMLM', '2:1:N']
-    ])('executes "%s" and returns "%s"', (command, expected) => {
+    ])('sends command "%s" and returns "%s"', (command, expected) => {
       const rover = new MarsRover(new GPS(new Map()), new NorthHeading());
       const missionControl = new MissionControl(rover);
 
@@ -87,7 +87,7 @@ describe('Mars Rover', () => {
   });
 
   describe('Obstacles', () => {
-    it('executes "MMMM" and returns "O:0:2:N" when obstacle at (0,3)', () => {
+    it('sends command "MMMM" and returns "O:0:2:N" when obstacle at (0,3)', () => {
       const mapWithObstacle = new Map([new Coordinates(0, 3)]);
       const rover = new MarsRover(new GPS(mapWithObstacle), new NorthHeading());
       const missionControl = new MissionControl(rover);
@@ -97,7 +97,7 @@ describe('Mars Rover', () => {
       expect(result).toBe('O:0:2:N');
     });
 
-    it('executes "RM" and returns "O:0:0:E" when obstacle at (1,0)', () => {
+    it('sends command "RM" and returns "O:0:0:E" when obstacle at (1,0)', () => {
       const mapWithObstacle = new Map([new Coordinates(1, 0)]);
       const rover = new MarsRover(new GPS(mapWithObstacle), new NorthHeading());
       const missionControl = new MissionControl(rover);
