@@ -5,15 +5,19 @@ export class MarsRover {
 
   execute(command: string): string {
     let yMovement = 0;
+    let direction = 'N';
     
     for (const character of command) {
       if (character === 'M') {
         yMovement++;
       }
+      if (character === 'L') {
+        direction = 'W';
+      }
     }
     
     const yPosition = this.grid.wrapY(yMovement);
     
-    return `0:${yPosition}:N`;
+    return `0:${yPosition}:${direction}`;
   }
 }
