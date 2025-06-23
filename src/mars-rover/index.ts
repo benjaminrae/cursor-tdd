@@ -11,7 +11,7 @@ export class MarsRover {
 
     for (const character of command) {
       if (character === "M") {
-        yMovement++;
+        yMovement = this.moveForward(yMovement);
       }
       if (character === "L") {
         currentDirection = currentDirection.rotateLeft();
@@ -26,4 +26,7 @@ export class MarsRover {
     return `0:${yPosition}:${currentDirection.toString()}`;
   }
 
+  private moveForward(currentYMovement: number): number {
+    return currentYMovement + 1;
+  }
 }
