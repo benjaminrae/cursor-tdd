@@ -27,12 +27,16 @@ export class MarsRover {
   }
 
   execute(command: string): string {
-    let totalMovement = new Movement(0, 0);
+    let currentPosition = new Coordinates(0, 0);
 
     for (const character of command) {
       if (character === "M") {
         const movement = this.direction.getMovement();
-        totalMovement = totalMovement.add(movement);
+        if (this.grid.isMovementBlocked(currentPosition, movement)) {
+          return `O:${currentPosition.getX()}:${currentPosition.getY()}:${this.direction.toString()}`;
+        }
+        const newMovement = new Movement(currentPosition.getX() + movement.x, currentPosition.getY() + movement.y);
+        currentPosition = this.grid.wrap(newMovement);
       }
       if (character === "L") {
         this.direction = this.direction.rotateLeft();
@@ -42,9 +46,7 @@ export class MarsRover {
       }
     }
 
-    const coordinates = this.grid.wrap(totalMovement);
-
-    return `${coordinates.getX()}:${coordinates.getY()}:${this.direction.toString()}`;
+    return `${currentPosition.getX()}:${currentPosition.getY()}:${this.direction.toString()}`;
   }
 
 }

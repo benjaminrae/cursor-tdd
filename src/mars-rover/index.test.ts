@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { MarsRover } from './index';
+import { MarsRover, Coordinates } from './index';
 import { Grid } from './grid';
 import { North } from './direction';
 
@@ -75,6 +75,17 @@ describe('Mars Rover', () => {
       const result = rover.execute(command);
 
       expect(result).toBe(expected);
+    });
+  });
+
+  describe('Obstacles', () => {
+    it('executes "MMMM" and returns "O:0:2:N" when obstacle at (0,3)', () => {
+      const gridWithObstacle = new Grid([new Coordinates(0, 3)]);
+      const rover = new MarsRover(gridWithObstacle, new North());
+
+      const result = rover.execute('MMMM');
+
+      expect(result).toBe('O:0:2:N');
     });
   });
 });

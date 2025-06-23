@@ -55,7 +55,7 @@ Develop an API that moves rovers around on a plateau on Mars. The plateau is rep
 - [x] "RMMLM" gives "2:1:N"
 
 ### Phase 7: Obstacles (Advanced)
-- [ ] Grid with obstacle at (0,3), "MMMM" gives "O:0:2:N"
+- [x] Grid with obstacle at (0,3), "MMMM" gives "O:0:2:N"
 - [ ] Grid with obstacle at (1,0), "RM" gives "O:0:0:E"
 
 ### Phase 8: Edge Cases
