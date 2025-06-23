@@ -1,4 +1,8 @@
+import { Grid } from './grid';
+
 export class MarsRover {
+  constructor(private grid: Grid = new Grid()) {}
+
   execute(command: string): string {
     let yMovement = 0;
     
@@ -8,7 +12,7 @@ export class MarsRover {
       }
     }
     
-    const yPosition = yMovement % 10;
+    const yPosition = this.grid.wrapY(yMovement);
     
     return `0:${yPosition}:N`;
   }
