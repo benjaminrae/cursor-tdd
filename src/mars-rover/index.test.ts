@@ -20,7 +20,8 @@ describe('Mars Rover', () => {
 
   describe('Left rotation commands', () => {
     it.each([
-      ['L', '0:0:W']
+      ['L', '0:0:W'],
+      ['LL', '0:0:S']
     ])('executes "%s" and returns "%s"', (command, expected) => {
       const rover = new MarsRover();
 
