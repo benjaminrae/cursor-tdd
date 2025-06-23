@@ -42,7 +42,7 @@ Develop an API that moves rovers around on a plateau on Mars. The plateau is rep
 - [x] Single "R" command rotates right to "0:0:E"
 - [x] "RR" rotates right twice to "0:0:S"
 - [x] "RRR" rotates right three times to "0:0:W"
-- [ ] "RRRR" rotates right four times back to "0:0:N"
+- [x] "RRRR" rotates right four times back to "0:0:N"
 
 ### Phase 5: Movement with Direction Changes (After mastering individual commands)
 - [ ] "RM" moves east to "1:0:E"

@@ -45,6 +45,8 @@ export class MarsRover {
       return "S";
     } else if (currentDirection === "S") {
       return "W";
+    } else if (currentDirection === "W") {
+      return "N";
     }
     return currentDirection;
   }
