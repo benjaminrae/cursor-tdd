@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { MarsRover } from './index';
+import { MissionControl } from './mission-control';
 import { Coordinates } from './coordinates';
 import { Map } from './map';
 import { GPS } from './gps';
@@ -15,8 +16,9 @@ describe('Mars Rover', () => {
       ['MMMMMMMMMM', '0:0:N']
     ])('executes "%s" and returns "%s"', (command, expected) => {
       const rover = new MarsRover(new GPS(new Map()), new NorthHeading());
+      const missionControl = new MissionControl(rover);
 
-      const result = rover.execute(command);
+      const result = missionControl.sendCommand(command);
 
       expect(result).toBe(expected);
     });
@@ -30,8 +32,9 @@ describe('Mars Rover', () => {
       ['LLLL', '0:0:N']
     ])('executes "%s" and returns "%s"', (command, expected) => {
       const rover = new MarsRover(new GPS(new Map()), new NorthHeading());
+      const missionControl = new MissionControl(rover);
 
-      const result = rover.execute(command);
+      const result = missionControl.sendCommand(command);
 
       expect(result).toBe(expected);
     });
@@ -45,8 +48,9 @@ describe('Mars Rover', () => {
       ['RRRR', '0:0:N']
     ])('executes "%s" and returns "%s"', (command, expected) => {
       const rover = new MarsRover(new GPS(new Map()), new NorthHeading());
+      const missionControl = new MissionControl(rover);
 
-      const result = rover.execute(command);
+      const result = missionControl.sendCommand(command);
 
       expect(result).toBe(expected);
     });
@@ -60,8 +64,9 @@ describe('Mars Rover', () => {
       ['LLM', '0:9:S']
     ])('executes "%s" and returns "%s"', (command, expected) => {
       const rover = new MarsRover(new GPS(new Map()), new NorthHeading());
+      const missionControl = new MissionControl(rover);
 
-      const result = rover.execute(command);
+      const result = missionControl.sendCommand(command);
 
       expect(result).toBe(expected);
     });
@@ -73,8 +78,9 @@ describe('Mars Rover', () => {
       ['RMMLM', '2:1:N']
     ])('executes "%s" and returns "%s"', (command, expected) => {
       const rover = new MarsRover(new GPS(new Map()), new NorthHeading());
+      const missionControl = new MissionControl(rover);
 
-      const result = rover.execute(command);
+      const result = missionControl.sendCommand(command);
 
       expect(result).toBe(expected);
     });
@@ -84,8 +90,9 @@ describe('Mars Rover', () => {
     it('executes "MMMM" and returns "O:0:2:N" when obstacle at (0,3)', () => {
       const mapWithObstacle = new Map([new Coordinates(0, 3)]);
       const rover = new MarsRover(new GPS(mapWithObstacle), new NorthHeading());
+      const missionControl = new MissionControl(rover);
 
-      const result = rover.execute('MMMM');
+      const result = missionControl.sendCommand('MMMM');
 
       expect(result).toBe('O:0:2:N');
     });
@@ -93,8 +100,9 @@ describe('Mars Rover', () => {
     it('executes "RM" and returns "O:0:0:E" when obstacle at (1,0)', () => {
       const mapWithObstacle = new Map([new Coordinates(1, 0)]);
       const rover = new MarsRover(new GPS(mapWithObstacle), new NorthHeading());
+      const missionControl = new MissionControl(rover);
 
-      const result = rover.execute('RM');
+      const result = missionControl.sendCommand('RM');
 
       expect(result).toBe('O:0:0:E');
     });
