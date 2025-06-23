@@ -2,27 +2,15 @@ import { describe, it, expect } from 'vitest';
 import { MarsRover } from './index';
 
 describe('Mars Rover', () => {
-  it('returns initial position when no commands are given', () => {
+  it.each([
+    ['', '0:0:N'],
+    ['M', '0:1:N'],
+    ['MM', '0:2:N']
+  ])('executes command "%s" and returns "%s"', (command, expected) => {
     const rover = new MarsRover();
-    
-    const result = rover.execute('');
-    
-    expect(result).toBe('0:0:N');
-  });
 
-  it('moves north when given single M command', () => {
-    const rover = new MarsRover();
-    
-    const result = rover.execute('M');
-    
-    expect(result).toBe('0:1:N');
-  });
+    const result = rover.execute(command);
 
-  it('moves twice north when given MM command', () => {
-    const rover = new MarsRover();
-    
-    const result = rover.execute('MM');
-    
-    expect(result).toBe('0:2:N');
+    expect(result).toBe(expected);
   });
 });
