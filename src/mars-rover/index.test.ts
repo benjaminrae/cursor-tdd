@@ -32,4 +32,16 @@ describe('Mars Rover', () => {
       expect(result).toBe(expected);
     });
   });
+
+  describe('Right rotation commands', () => {
+    it.each([
+      ['R', '0:0:E']
+    ])('executes "%s" and returns "%s"', (command, expected) => {
+      const rover = new MarsRover();
+
+      const result = rover.execute(command);
+
+      expect(result).toBe(expected);
+    });
+  });
 });

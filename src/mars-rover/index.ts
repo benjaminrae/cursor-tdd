@@ -15,6 +15,9 @@ export class MarsRover {
       if (character === "L") {
         direction = this.rotateLeft(direction);
       }
+      if (character === "R") {
+        direction = "E";
+      }
     }
 
     const yPosition = this.grid.wrapY(yMovement);
