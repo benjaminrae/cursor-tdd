@@ -1,7 +1,8 @@
 import { Grid } from "./grid";
+import { Direction } from "./direction";
 
 export class MarsRover {
-  constructor(private grid: Grid = new Grid()) {
+  constructor(private grid: Grid = new Grid(), private direction: Direction = new Direction()) {
   }
 
   execute(command: string): string {
@@ -13,10 +14,10 @@ export class MarsRover {
         yMovement++;
       }
       if (character === "L") {
-        direction = this.rotateLeft(direction);
+        direction = this.direction.rotateLeft(direction);
       }
       if (character === "R") {
-        direction = this.rotateRight(direction);
+        direction = this.direction.rotateRight(direction);
       }
     }
 
@@ -25,29 +26,4 @@ export class MarsRover {
     return `0:${yPosition}:${direction}`;
   }
 
-  private rotateLeft(currentDirection: string): string {
-    if (currentDirection === "N") {
-      return "W";
-    } else if (currentDirection === "W") {
-      return "S";
-    } else if (currentDirection === "S") {
-      return "E";
-    } else if (currentDirection === "E") {
-      return "N";
-    }
-    return currentDirection;
-  }
-
-  private rotateRight(currentDirection: string): string {
-    if (currentDirection === "N") {
-      return "E";
-    } else if (currentDirection === "E") {
-      return "S";
-    } else if (currentDirection === "S") {
-      return "W";
-    } else if (currentDirection === "W") {
-      return "N";
-    }
-    return currentDirection;
-  }
 }
