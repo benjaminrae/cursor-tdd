@@ -1,11 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import { MarsRover } from './mars-rover';
 import { MissionControl } from './mission-control';
 import { Coordinates } from './coordinates';
-import { Map } from './map';
-import { GPS } from './gps';
-import { NorthHeading } from './compass';
-import { EventBag } from './event-bag';
+import { MarsRoverBuilder } from './mars-rover.builder';
 
 describe('Mission Control', () => {
   describe('Move commands', () => {
@@ -16,7 +12,7 @@ describe('Mission Control', () => {
       ['MMM', '0:3:N'],
       ['MMMMMMMMMM', '0:0:N']
     ])('sends command "%s" and returns "%s"', (command, expected) => {
-      const rover = new MarsRover(new GPS(new Map()), new NorthHeading(), new EventBag());
+      const rover = new MarsRoverBuilder().build();
       const missionControl = new MissionControl(rover);
 
       const result = missionControl.sendCommand(command);
@@ -32,7 +28,7 @@ describe('Mission Control', () => {
       ['LLL', '0:0:E'],
       ['LLLL', '0:0:N']
     ])('sends command "%s" and returns "%s"', (command, expected) => {
-      const rover = new MarsRover(new GPS(new Map()), new NorthHeading(), new EventBag());
+      const rover = new MarsRoverBuilder().build();
       const missionControl = new MissionControl(rover);
 
       const result = missionControl.sendCommand(command);
@@ -48,7 +44,7 @@ describe('Mission Control', () => {
       ['RRR', '0:0:W'],
       ['RRRR', '0:0:N']
     ])('sends command "%s" and returns "%s"', (command, expected) => {
-      const rover = new MarsRover(new GPS(new Map()), new NorthHeading(), new EventBag());
+      const rover = new MarsRoverBuilder().build();
       const missionControl = new MissionControl(rover);
 
       const result = missionControl.sendCommand(command);
@@ -64,7 +60,7 @@ describe('Mission Control', () => {
       ['RRM', '0:9:S'],
       ['LLM', '0:9:S']
     ])('sends command "%s" and returns "%s"', (command, expected) => {
-      const rover = new MarsRover(new GPS(new Map()), new NorthHeading(), new EventBag());
+      const rover = new MarsRoverBuilder().build();
       const missionControl = new MissionControl(rover);
 
       const result = missionControl.sendCommand(command);
@@ -78,7 +74,7 @@ describe('Mission Control', () => {
       ['MMRMMLM', '2:3:N'],
       ['RMMLM', '2:1:N']
     ])('sends command "%s" and returns "%s"', (command, expected) => {
-      const rover = new MarsRover(new GPS(new Map()), new NorthHeading(), new EventBag());
+      const rover = new MarsRoverBuilder().build();
       const missionControl = new MissionControl(rover);
 
       const result = missionControl.sendCommand(command);
@@ -89,8 +85,9 @@ describe('Mission Control', () => {
 
   describe('Obstacles', () => {
     it('sends command "MMMM" and returns "O:0:2:N" when obstacle at (0,3)', () => {
-      const mapWithObstacle = new Map([new Coordinates(0, 3)]);
-      const rover = new MarsRover(new GPS(mapWithObstacle), new NorthHeading(), new EventBag());
+      const rover = new MarsRoverBuilder()
+        .withObstacles([new Coordinates(0, 3)])
+        .build();
       const missionControl = new MissionControl(rover);
 
       const result = missionControl.sendCommand('MMMM');
@@ -99,8 +96,9 @@ describe('Mission Control', () => {
     });
 
     it('sends command "RM" and returns "O:0:0:E" when obstacle at (1,0)', () => {
-      const mapWithObstacle = new Map([new Coordinates(1, 0)]);
-      const rover = new MarsRover(new GPS(mapWithObstacle), new NorthHeading(), new EventBag());
+      const rover = new MarsRoverBuilder()
+        .withObstacles([new Coordinates(1, 0)])
+        .build();
       const missionControl = new MissionControl(rover);
 
       const result = missionControl.sendCommand('RM');
