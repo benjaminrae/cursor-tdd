@@ -16,7 +16,11 @@ export class MarsRover {
         direction = this.rotateLeft(direction);
       }
       if (character === "R") {
-        direction = "E";
+        if (direction === "N") {
+          direction = "E";
+        } else if (direction === "E") {
+          direction = "S";
+        }
       }
     }
 

@@ -40,7 +40,7 @@ Develop an API that moves rovers around on a plateau on Mars. The plateau is rep
 #### Empty → Single → Multiple
 - Empty command returns "0:0:N" (foundation from Phase 1)
 - [x] Single "R" command rotates right to "0:0:E"
-- [ ] "RR" rotates right twice to "0:0:S"
+- [x] "RR" rotates right twice to "0:0:S"
 - [ ] "RRR" rotates right three times to "0:0:W"
 - [ ] "RRRR" rotates right four times back to "0:0:N"
 
