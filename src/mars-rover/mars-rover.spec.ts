@@ -74,5 +74,17 @@ describe('Mars Rover', () => {
       const events = eventBag.release();
       expect(events).toHaveLength(0);
     });
+
+    it('does not emit any event when empty command is executed', () => {
+      const eventBag = new EventBag();
+      const rover = new MarsRoverBuilder()
+        .withEventBag(eventBag)
+        .build();
+
+      rover.execute('');
+
+      const events = eventBag.release();
+      expect(events).toHaveLength(0);
+    });
   });
 });
