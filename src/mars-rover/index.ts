@@ -1,4 +1,4 @@
-import { Map } from "./map";
+import { GPS } from "./gps";
 import { Direction } from "./direction";
 
 export class Movement {
@@ -23,19 +23,17 @@ export class Coordinates {
 
 
 export class MarsRover {
-  constructor(private map: Map, private direction: Direction) {
+  constructor(private gps: GPS, private direction: Direction) {
   }
 
   execute(command: string): string {
-    let currentPosition = new Coordinates(0, 0);
-
     for (const character of command) {
       if (character === "M") {
         const movement = this.direction.getMovement();
-        if (this.map.isMovementBlocked(currentPosition, movement)) {
+        if (!this.gps.move(movement)) {
+          const currentPosition = this.gps.getCurrentPosition();
           return `O:${currentPosition.getX()}:${currentPosition.getY()}:${this.direction.toString()}`;
         }
-        currentPosition = this.calculateNewPosition(currentPosition, movement);
       }
       if (character === "L") {
         this.direction = this.direction.rotateLeft();
@@ -45,12 +43,9 @@ export class MarsRover {
       }
     }
 
+    const currentPosition = this.gps.getCurrentPosition();
     return `${currentPosition.getX()}:${currentPosition.getY()}:${this.direction.toString()}`;
   }
 
-  private calculateNewPosition(currentPosition: Coordinates, movement: Movement): Coordinates {
-    const newMovement = new Movement(currentPosition.getX() + movement.x, currentPosition.getY() + movement.y);
-    return this.map.wrap(newMovement);
-  }
 
 }
