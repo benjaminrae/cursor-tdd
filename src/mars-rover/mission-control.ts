@@ -5,7 +5,7 @@ export class MissionControl {
 
   sendCommand(command: string): string {
     for (const character of command) {
-      const result = this.rover.executeSingleCommand(character);
+      const result = this.rover.execute(character);
       if (result) {
         return result;
       }

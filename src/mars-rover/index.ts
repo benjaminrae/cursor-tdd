@@ -6,17 +6,7 @@ export class MarsRover {
   constructor(private gps: GPS, private compass: Compass) {
   }
 
-  execute(command: string): string {
-    for (const character of command) {
-      const result = this.executeSingleCommand(character);
-      if (result) {
-        return result;
-      }
-    }
-    return this.getStatus();
-  }
-
-  executeSingleCommand(command: string): string | null {
+  execute(command: string): string | null {
     if (command === "M") {
       const movement = this.compass.getMovement();
       if (!this.gps.move(movement)) {
