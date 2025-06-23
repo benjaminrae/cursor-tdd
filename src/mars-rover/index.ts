@@ -3,6 +3,10 @@ import { Direction } from "./direction";
 
 class Movement {
   constructor(public x: number, public y: number) {}
+
+  add(other: Movement): Movement {
+    return new Movement(this.x + other.x, this.y + other.y);
+  }
 }
 
 
@@ -11,15 +15,13 @@ export class MarsRover {
   }
 
   execute(command: string): string {
-    let xMovement = 0;
-    let yMovement = 0;
+    let totalMovement = new Movement(0, 0);
     let currentDirection = this.direction;
 
     for (const character of command) {
       if (character === "M") {
         const movement = this.getMovement(currentDirection);
-        xMovement += movement.x;
-        yMovement += movement.y;
+        totalMovement = totalMovement.add(movement);
       }
       if (character === "L") {
         currentDirection = currentDirection.rotateLeft();
@@ -29,8 +31,8 @@ export class MarsRover {
       }
     }
 
-    const yPosition = this.grid.wrapY(yMovement);
-    const xPosition = this.grid.wrapX(xMovement);
+    const yPosition = this.grid.wrapY(totalMovement.y);
+    const xPosition = this.grid.wrapX(totalMovement.x);
 
     return `${xPosition}:${yPosition}:${currentDirection.toString()}`;
   }
