@@ -9,6 +9,18 @@ class Movement {
   }
 }
 
+class Coordinates {
+  constructor(private x: number, private y: number) {}
+
+  getX(): number {
+    return this.x;
+  }
+
+  getY(): number {
+    return this.y;
+  }
+}
+
 
 export class MarsRover {
   constructor(private grid: Grid, private direction: Direction) {
@@ -33,8 +45,9 @@ export class MarsRover {
 
     const yPosition = this.grid.wrapY(totalMovement.y);
     const xPosition = this.grid.wrapX(totalMovement.x);
+    const coordinates = new Coordinates(xPosition, yPosition);
 
-    return `${xPosition}:${yPosition}:${currentDirection.toString()}`;
+    return `${coordinates.getX()}:${coordinates.getY()}:${currentDirection.toString()}`;
   }
 
   private getMovement(direction: Direction): Movement {
