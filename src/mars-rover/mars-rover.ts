@@ -1,9 +1,11 @@
 import { GPS } from "./gps";
 import { Compass } from "./compass";
+import { EventBag } from "./event-bag";
+import { Event } from "./event";
 
 
 export class MarsRover {
-  constructor(private gps: GPS, private compass: Compass) {
+  constructor(private gps: GPS, private compass: Compass, private eventBag: EventBag) {
   }
 
   execute(command: string): string | null {
@@ -12,6 +14,7 @@ export class MarsRover {
       if (!this.gps.move(movement)) {
         return this.getObstacleStatus();
       }
+      this.eventBag.record(new Event('RoverMovedForward'));
     }
     if (command === "L") {
       this.compass = this.compass.rotateLeft();
