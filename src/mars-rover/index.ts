@@ -1,5 +1,5 @@
 import { GPS } from "./gps";
-import { Direction } from "./direction";
+import { Compass } from "./compass";
 
 export class Movement {
   constructor(public x: number, public y: number) {}
@@ -23,28 +23,28 @@ export class Coordinates {
 
 
 export class MarsRover {
-  constructor(private gps: GPS, private direction: Direction) {
+  constructor(private gps: GPS, private compass: Compass) {
   }
 
   execute(command: string): string {
     for (const character of command) {
       if (character === "M") {
-        const movement = this.direction.getMovement();
+        const movement = this.compass.getMovement();
         if (!this.gps.move(movement)) {
           const currentPosition = this.gps.getCurrentPosition();
-          return `O:${currentPosition.getX()}:${currentPosition.getY()}:${this.direction.toString()}`;
+          return `O:${currentPosition.getX()}:${currentPosition.getY()}:${this.compass.toString()}`;
         }
       }
       if (character === "L") {
-        this.direction = this.direction.rotateLeft();
+        this.compass = this.compass.rotateLeft();
       }
       if (character === "R") {
-        this.direction = this.direction.rotateRight();
+        this.compass = this.compass.rotateRight();
       }
     }
 
     const currentPosition = this.gps.getCurrentPosition();
-    return `${currentPosition.getX()}:${currentPosition.getY()}:${this.direction.toString()}`;
+    return `${currentPosition.getX()}:${currentPosition.getY()}:${this.compass.toString()}`;
   }
 
 

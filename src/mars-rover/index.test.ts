@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { MarsRover, Coordinates } from './index';
 import { Map } from './map';
 import { GPS } from './gps';
-import { North } from './direction';
+import { NorthHeading } from './compass';
 
 describe('Mars Rover', () => {
   describe('Move commands', () => {
@@ -13,7 +13,7 @@ describe('Mars Rover', () => {
       ['MMM', '0:3:N'],
       ['MMMMMMMMMM', '0:0:N']
     ])('executes "%s" and returns "%s"', (command, expected) => {
-      const rover = new MarsRover(new GPS(new Map()), new North());
+      const rover = new MarsRover(new GPS(new Map()), new NorthHeading());
 
       const result = rover.execute(command);
 
@@ -28,7 +28,7 @@ describe('Mars Rover', () => {
       ['LLL', '0:0:E'],
       ['LLLL', '0:0:N']
     ])('executes "%s" and returns "%s"', (command, expected) => {
-      const rover = new MarsRover(new GPS(new Map()), new North());
+      const rover = new MarsRover(new GPS(new Map()), new NorthHeading());
 
       const result = rover.execute(command);
 
@@ -43,7 +43,7 @@ describe('Mars Rover', () => {
       ['RRR', '0:0:W'],
       ['RRRR', '0:0:N']
     ])('executes "%s" and returns "%s"', (command, expected) => {
-      const rover = new MarsRover(new GPS(new Map()), new North());
+      const rover = new MarsRover(new GPS(new Map()), new NorthHeading());
 
       const result = rover.execute(command);
 
@@ -58,7 +58,7 @@ describe('Mars Rover', () => {
       ['RRM', '0:9:S'],
       ['LLM', '0:9:S']
     ])('executes "%s" and returns "%s"', (command, expected) => {
-      const rover = new MarsRover(new GPS(new Map()), new North());
+      const rover = new MarsRover(new GPS(new Map()), new NorthHeading());
 
       const result = rover.execute(command);
 
@@ -71,7 +71,7 @@ describe('Mars Rover', () => {
       ['MMRMMLM', '2:3:N'],
       ['RMMLM', '2:1:N']
     ])('executes "%s" and returns "%s"', (command, expected) => {
-      const rover = new MarsRover(new GPS(new Map()), new North());
+      const rover = new MarsRover(new GPS(new Map()), new NorthHeading());
 
       const result = rover.execute(command);
 
@@ -82,7 +82,7 @@ describe('Mars Rover', () => {
   describe('Obstacles', () => {
     it('executes "MMMM" and returns "O:0:2:N" when obstacle at (0,3)', () => {
       const mapWithObstacle = new Map([new Coordinates(0, 3)]);
-      const rover = new MarsRover(new GPS(mapWithObstacle), new North());
+      const rover = new MarsRover(new GPS(mapWithObstacle), new NorthHeading());
 
       const result = rover.execute('MMMM');
 
@@ -91,7 +91,7 @@ describe('Mars Rover', () => {
 
     it('executes "RM" and returns "O:0:0:E" when obstacle at (1,0)', () => {
       const mapWithObstacle = new Map([new Coordinates(1, 0)]);
-      const rover = new MarsRover(new GPS(mapWithObstacle), new North());
+      const rover = new MarsRover(new GPS(mapWithObstacle), new NorthHeading());
 
       const result = rover.execute('RM');
 
