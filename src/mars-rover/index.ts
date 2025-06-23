@@ -13,18 +13,23 @@ export class MarsRover {
         yMovement++;
       }
       if (character === "L") {
-        if (direction === "N") {
-          direction = "W";
-        } else if (direction === "W") {
-          direction = "S";
-        } else if (direction === "S") {
-          direction = "E";
-        }
+        direction = this.rotateLeft(direction);
       }
     }
 
     const yPosition = this.grid.wrapY(yMovement);
 
     return `0:${yPosition}:${direction}`;
+  }
+
+  private rotateLeft(currentDirection: string): string {
+    if (currentDirection === "N") {
+      return "W";
+    } else if (currentDirection === "W") {
+      return "S";
+    } else if (currentDirection === "S") {
+      return "E";
+    }
+    return currentDirection;
   }
 }
