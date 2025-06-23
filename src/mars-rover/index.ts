@@ -1,7 +1,7 @@
 import { Grid } from "./grid";
 import { Direction } from "./direction";
 
-class Movement {
+export class Movement {
   constructor(public x: number, public y: number) {}
 
   add(other: Movement): Movement {
@@ -9,7 +9,7 @@ class Movement {
   }
 }
 
-class Coordinates {
+export class Coordinates {
   constructor(private x: number, private y: number) {}
 
   getX(): number {
@@ -43,9 +43,7 @@ export class MarsRover {
       }
     }
 
-    const yPosition = this.grid.wrapY(totalMovement.y);
-    const xPosition = this.grid.wrapX(totalMovement.x);
-    const coordinates = new Coordinates(xPosition, yPosition);
+    const coordinates = this.grid.wrap(totalMovement);
 
     return `${coordinates.getX()}:${coordinates.getY()}:${currentDirection.toString()}`;
   }
