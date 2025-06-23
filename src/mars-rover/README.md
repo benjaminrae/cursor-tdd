@@ -33,7 +33,7 @@ Develop an API that moves rovers around on a plateau on Mars. The plateau is rep
 - Empty command returns "0:0:N" (foundation from Phase 1)
 - [x] Single "L" command rotates left to "0:0:W"
 - [x] "LL" rotates left twice to "0:0:S"
-- [ ] "LLL" rotates left three times to "0:0:E"
+- [x] "LLL" rotates left three times to "0:0:E"
 - [ ] "LLLL" rotates left four times back to "0:0:N"
 
 ### Phase 4: Right Rotation (R) - Complete This Third
