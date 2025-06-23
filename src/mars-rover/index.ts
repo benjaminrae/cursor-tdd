@@ -7,23 +7,23 @@ export class MarsRover {
 
   execute(command: string): string {
     let yMovement = 0;
-    let direction = "N";
+    let currentDirection = this.direction;
 
     for (const character of command) {
       if (character === "M") {
         yMovement++;
       }
       if (character === "L") {
-        direction = this.direction.rotateLeft(direction);
+        currentDirection = currentDirection.rotateLeft();
       }
       if (character === "R") {
-        direction = this.direction.rotateRight(direction);
+        currentDirection = currentDirection.rotateRight();
       }
     }
 
     const yPosition = this.grid.wrapY(yMovement);
 
-    return `0:${yPosition}:${direction}`;
+    return `0:${yPosition}:${currentDirection.toString()}`;
   }
 
 }
