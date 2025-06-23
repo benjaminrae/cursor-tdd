@@ -1,4 +1,4 @@
-import { Grid } from "./grid";
+import { Map } from "./map";
 import { Direction } from "./direction";
 
 export class Movement {
@@ -23,7 +23,7 @@ export class Coordinates {
 
 
 export class MarsRover {
-  constructor(private grid: Grid, private direction: Direction) {
+  constructor(private map: Map, private direction: Direction) {
   }
 
   execute(command: string): string {
@@ -32,7 +32,7 @@ export class MarsRover {
     for (const character of command) {
       if (character === "M") {
         const movement = this.direction.getMovement();
-        if (this.grid.isMovementBlocked(currentPosition, movement)) {
+        if (this.map.isMovementBlocked(currentPosition, movement)) {
           return `O:${currentPosition.getX()}:${currentPosition.getY()}:${this.direction.toString()}`;
         }
         currentPosition = this.calculateNewPosition(currentPosition, movement);
@@ -50,7 +50,7 @@ export class MarsRover {
 
   private calculateNewPosition(currentPosition: Coordinates, movement: Movement): Coordinates {
     const newMovement = new Movement(currentPosition.getX() + movement.x, currentPosition.getY() + movement.y);
-    return this.grid.wrap(newMovement);
+    return this.map.wrap(newMovement);
   }
 
 }

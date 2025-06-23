@@ -2,7 +2,7 @@ import { Movement, Coordinates } from "./index";
 
 const GRID_SIZE = 10;
 
-export class Grid {
+export class Map {
   private obstacles: Set<string> = new Set();
 
   constructor(obstacles: Coordinates[] = [], private size: number = GRID_SIZE) {
