@@ -3,13 +3,13 @@ export class MarsRover {
     let y = 0;
     
     if (command === 'MMM') {
-      y = 3;
+      y = command.length;
     }
     if (command === 'MM') {
-      y = 2;
+      y = command.length;
     }
     if (command === 'M') {
-      y = 1;
+      y = command.length;
     }
     
     return `0:${y}:N`;
