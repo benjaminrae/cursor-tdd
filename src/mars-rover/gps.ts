@@ -1,5 +1,6 @@
 import { Map } from "./map";
-import { Movement, Coordinates } from "./index";
+import { Movement } from "./movement";
+import { Coordinates } from "./coordinates";
 
 export class GPS {
   private currentPosition: Coordinates = new Coordinates(0, 0);

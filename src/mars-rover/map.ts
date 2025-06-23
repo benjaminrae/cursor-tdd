@@ -1,4 +1,5 @@
-import { Movement, Coordinates } from "./index";
+import { Movement } from "./movement";
+import { Coordinates } from "./coordinates";
 
 const GRID_SIZE = 10;
 

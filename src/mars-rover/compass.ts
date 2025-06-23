@@ -1,4 +1,4 @@
-import { Movement } from "./index";
+import { Movement } from "./movement";
 
 export abstract class Compass {
   constructor(private symbol: string) {}
