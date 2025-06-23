@@ -87,5 +87,14 @@ describe('Mars Rover', () => {
 
       expect(result).toBe('O:0:2:N');
     });
+
+    it('executes "RM" and returns "O:0:0:E" when obstacle at (1,0)', () => {
+      const gridWithObstacle = new Grid([new Coordinates(1, 0)]);
+      const rover = new MarsRover(gridWithObstacle, new North());
+
+      const result = rover.execute('RM');
+
+      expect(result).toBe('O:0:0:E');
+    });
   });
 });

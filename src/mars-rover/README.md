@@ -56,7 +56,7 @@ Develop an API that moves rovers around on a plateau on Mars. The plateau is rep
 
 ### Phase 7: Obstacles (Advanced)
 - [x] Grid with obstacle at (0,3), "MMMM" gives "O:0:2:N"
-- [ ] Grid with obstacle at (1,0), "RM" gives "O:0:0:E"
+- [x] Grid with obstacle at (1,0), "RM" gives "O:0:0:E"
 
 ### Phase 8: Edge Cases
 - [ ] Invalid commands (ignore or error)
