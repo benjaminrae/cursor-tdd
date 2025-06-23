@@ -1,10 +1,26 @@
+import { Movement } from "./index";
+
 export abstract class Direction {
+  constructor(private symbol: string) {}
+
   abstract rotateLeft(): Direction;
   abstract rotateRight(): Direction;
-  abstract toString(): string;
+  abstract getMovement(): Movement;
+
+  getSymbol(): string {
+    return this.symbol;
+  }
+
+  toString(): string {
+    return this.getSymbol();
+  }
 }
 
 export class North extends Direction {
+  constructor() {
+    super("N");
+  }
+
   rotateLeft(): Direction {
     return new West();
   }
@@ -13,12 +29,16 @@ export class North extends Direction {
     return new East();
   }
 
-  toString(): string {
-    return "N";
+  getMovement(): Movement {
+    return new Movement(0, 1);
   }
 }
 
 export class East extends Direction {
+  constructor() {
+    super("E");
+  }
+
   rotateLeft(): Direction {
     return new North();
   }
@@ -27,12 +47,16 @@ export class East extends Direction {
     return new South();
   }
 
-  toString(): string {
-    return "E";
+  getMovement(): Movement {
+    return new Movement(1, 0);
   }
 }
 
 export class South extends Direction {
+  constructor() {
+    super("S");
+  }
+
   rotateLeft(): Direction {
     return new East();
   }
@@ -41,12 +65,16 @@ export class South extends Direction {
     return new West();
   }
 
-  toString(): string {
-    return "S";
+  getMovement(): Movement {
+    throw new Error('Not implemented');
   }
 }
 
 export class West extends Direction {
+  constructor() {
+    super("W");
+  }
+
   rotateLeft(): Direction {
     return new South();
   }
@@ -55,7 +83,7 @@ export class West extends Direction {
     return new North();
   }
 
-  toString(): string {
-    return "W";
+  getMovement(): Movement {
+    return new Movement(-1, 0);
   }
 }
