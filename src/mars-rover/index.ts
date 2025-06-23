@@ -15,6 +15,8 @@ export class MarsRover {
       if (character === "M") {
         if (currentDirection.toString() === "E") {
           xMovement++;
+        } else if (currentDirection.toString() === "W") {
+          xMovement--;
         } else {
           yMovement = this.moveForward(yMovement);
         }
@@ -28,8 +30,9 @@ export class MarsRover {
     }
 
     const yPosition = this.grid.wrapY(yMovement);
+    const xPosition = (xMovement + 10) % 10;
 
-    return `${xMovement}:${yPosition}:${currentDirection.toString()}`;
+    return `${xPosition}:${yPosition}:${currentDirection.toString()}`;
   }
 
   private moveForward(currentYMovement: number): number {

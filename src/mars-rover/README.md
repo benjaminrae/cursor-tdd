@@ -46,7 +46,7 @@ Develop an API that moves rovers around on a plateau on Mars. The plateau is rep
 
 ### Phase 5: Movement with Direction Changes (After mastering individual commands)
 - [x] "RM" moves east to "1:0:E"
-- [ ] "LM" moves west to "9:0:W" (wrap-around)
+- [x] "LM" moves west to "9:0:W" (wrap-around)
 - [ ] "RRM" moves south to "0:9:S" (wrap-around)
 - [ ] "LLM" moves south to "0:9:S" (wrap-around)
 

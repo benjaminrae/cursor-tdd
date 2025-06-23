@@ -52,7 +52,8 @@ describe('Mars Rover', () => {
 
   describe('Movement with direction changes', () => {
     it.each([
-      ['RM', '1:0:E']
+      ['RM', '1:0:E'],
+      ['LM', '9:0:W']
     ])('executes "%s" and returns "%s"', (command, expected) => {
       const rover = new MarsRover(new Grid(), new North());
 
