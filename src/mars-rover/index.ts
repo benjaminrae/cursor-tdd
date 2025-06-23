@@ -2,7 +2,7 @@ import { Grid } from "./grid";
 import { Direction } from "./direction";
 
 export class MarsRover {
-  constructor(private grid: Grid = new Grid(), private direction: Direction = new Direction()) {
+  constructor(private grid: Grid, private direction: Direction) {
   }
 
   execute(command: string): string {

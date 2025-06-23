@@ -1,27 +1,61 @@
-export class Direction {
-  rotateLeft(currentDirection: string): string {
-    if (currentDirection === "N") {
-      return "W";
-    } else if (currentDirection === "W") {
-      return "S";
-    } else if (currentDirection === "S") {
-      return "E";
-    } else if (currentDirection === "E") {
-      return "N";
-    }
-    return currentDirection;
+export abstract class Direction {
+  abstract rotateLeft(): Direction;
+  abstract rotateRight(): Direction;
+  abstract toString(): string;
+}
+
+export class North extends Direction {
+  rotateLeft(): Direction {
+    return new West();
   }
 
-  rotateRight(currentDirection: string): string {
-    if (currentDirection === "N") {
-      return "E";
-    } else if (currentDirection === "E") {
-      return "S";
-    } else if (currentDirection === "S") {
-      return "W";
-    } else if (currentDirection === "W") {
-      return "N";
-    }
-    return currentDirection;
+  rotateRight(): Direction {
+    return new East();
+  }
+
+  toString(): string {
+    return "N";
+  }
+}
+
+export class East extends Direction {
+  rotateLeft(): Direction {
+    return new North();
+  }
+
+  rotateRight(): Direction {
+    return new South();
+  }
+
+  toString(): string {
+    return "E";
+  }
+}
+
+export class South extends Direction {
+  rotateLeft(): Direction {
+    return new East();
+  }
+
+  rotateRight(): Direction {
+    return new West();
+  }
+
+  toString(): string {
+    return "S";
+  }
+}
+
+export class West extends Direction {
+  rotateLeft(): Direction {
+    return new South();
+  }
+
+  rotateRight(): Direction {
+    return new North();
+  }
+
+  toString(): string {
+    return "W";
   }
 }

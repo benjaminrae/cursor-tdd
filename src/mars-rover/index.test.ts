@@ -1,5 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { MarsRover } from './index';
+import { Grid } from './grid';
+import { North } from './direction';
 
 describe('Mars Rover', () => {
   describe('Move commands', () => {
@@ -10,7 +12,7 @@ describe('Mars Rover', () => {
       ['MMM', '0:3:N'],
       ['MMMMMMMMMM', '0:0:N']
     ])('executes "%s" and returns "%s"', (command, expected) => {
-      const rover = new MarsRover();
+      const rover = new MarsRover(new Grid(), new North());
 
       const result = rover.execute(command);
 
@@ -25,7 +27,7 @@ describe('Mars Rover', () => {
       ['LLL', '0:0:E'],
       ['LLLL', '0:0:N']
     ])('executes "%s" and returns "%s"', (command, expected) => {
-      const rover = new MarsRover();
+      const rover = new MarsRover(new Grid(), new North());
 
       const result = rover.execute(command);
 
@@ -40,7 +42,7 @@ describe('Mars Rover', () => {
       ['RRR', '0:0:W'],
       ['RRRR', '0:0:N']
     ])('executes "%s" and returns "%s"', (command, expected) => {
-      const rover = new MarsRover();
+      const rover = new MarsRover(new Grid(), new North());
 
       const result = rover.execute(command);
 
