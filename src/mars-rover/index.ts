@@ -16,11 +16,7 @@ export class MarsRover {
         direction = this.rotateLeft(direction);
       }
       if (character === "R") {
-        if (direction === "N") {
-          direction = "E";
-        } else if (direction === "E") {
-          direction = "S";
-        }
+        direction = this.rotateRight(direction);
       }
     }
 
@@ -38,6 +34,17 @@ export class MarsRover {
       return "E";
     } else if (currentDirection === "E") {
       return "N";
+    }
+    return currentDirection;
+  }
+
+  private rotateRight(currentDirection: string): string {
+    if (currentDirection === "N") {
+      return "E";
+    } else if (currentDirection === "E") {
+      return "S";
+    } else if (currentDirection === "S") {
+      return "W";
     }
     return currentDirection;
   }
