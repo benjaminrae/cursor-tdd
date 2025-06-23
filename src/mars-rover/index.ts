@@ -29,6 +29,8 @@ export class MarsRover {
       return "S";
     } else if (currentDirection === "S") {
       return "E";
+    } else if (currentDirection === "E") {
+      return "N";
     }
     return currentDirection;
   }

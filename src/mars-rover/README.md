@@ -34,7 +34,7 @@ Develop an API that moves rovers around on a plateau on Mars. The plateau is rep
 - [x] Single "L" command rotates left to "0:0:W"
 - [x] "LL" rotates left twice to "0:0:S"
 - [x] "LLL" rotates left three times to "0:0:E"
-- [ ] "LLLL" rotates left four times back to "0:0:N"
+- [x] "LLLL" rotates left four times back to "0:0:N"
 
 ### Phase 4: Right Rotation (R) - Complete This Third
 #### Empty → Single → Multiple
