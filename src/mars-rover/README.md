@@ -51,8 +51,8 @@ Develop an API that moves rovers around on a plateau on Mars. The plateau is rep
 - [x] "LLM" moves south to "0:9:S" (wrap-around)
 
 ### Phase 6: Complex Patterns (Combining different commands)
-- [ ] "MMRMMLM" gives "2:3:N" (from kata example)
-- [ ] "RMMLM" gives "2:1:N"
+- [x] "MMRMMLM" gives "2:3:N" (from kata example)
+- [x] "RMMLM" gives "2:1:N"
 
 ### Phase 7: Obstacles (Advanced)
 - [ ] Grid with obstacle at (0,3), "MMMM" gives "O:0:2:N"

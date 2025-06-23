@@ -64,4 +64,17 @@ describe('Mars Rover', () => {
       expect(result).toBe(expected);
     });
   });
+
+  describe('Complex patterns', () => {
+    it.each([
+      ['MMRMMLM', '2:3:N'],
+      ['RMMLM', '2:1:N']
+    ])('executes "%s" and returns "%s"', (command, expected) => {
+      const rover = new MarsRover(new Grid(), new North());
+
+      const result = rover.execute(command);
+
+      expect(result).toBe(expected);
+    });
+  });
 });
