@@ -1,6 +1,10 @@
 import { Grid } from "./grid";
 import { Direction } from "./direction";
 
+class Movement {
+  constructor(public x: number, public y: number) {}
+}
+
 
 export class MarsRover {
   constructor(private grid: Grid, private direction: Direction) {
@@ -13,13 +17,9 @@ export class MarsRover {
 
     for (const character of command) {
       if (character === "M") {
-        if (currentDirection.toString() === "E") {
-          xMovement++;
-        } else if (currentDirection.toString() === "W") {
-          xMovement--;
-        } else {
-          yMovement = this.moveForward(yMovement);
-        }
+        const movement = this.getMovement(currentDirection);
+        xMovement += movement.x;
+        yMovement += movement.y;
       }
       if (character === "L") {
         currentDirection = currentDirection.rotateLeft();
@@ -35,7 +35,13 @@ export class MarsRover {
     return `${xPosition}:${yPosition}:${currentDirection.toString()}`;
   }
 
-  private moveForward(currentYMovement: number): number {
-    return currentYMovement + 1;
+  private getMovement(direction: Direction): Movement {
+    if (direction.toString() === "E") {
+      return new Movement(1, 0);
+    } else if (direction.toString() === "W") {
+      return new Movement(-1, 0);
+    } else {
+      return new Movement(0, 1);
+    }
   }
 }
