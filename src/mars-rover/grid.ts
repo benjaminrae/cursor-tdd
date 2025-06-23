@@ -6,4 +6,8 @@ export class Grid {
   wrapY(yMovement: number): number {
     return yMovement % this.size;
   }
+
+  wrapX(xMovement: number): number {
+    return (xMovement + this.size) % this.size;
+  }
 }

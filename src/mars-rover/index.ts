@@ -30,7 +30,7 @@ export class MarsRover {
     }
 
     const yPosition = this.grid.wrapY(yMovement);
-    const xPosition = (xMovement + 10) % 10;
+    const xPosition = this.grid.wrapX(xMovement);
 
     return `${xPosition}:${yPosition}:${currentDirection.toString()}`;
   }
