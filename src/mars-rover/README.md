@@ -23,7 +23,7 @@ Develop an API that moves rovers around on a plateau on Mars. The plateau is rep
 ### Phase 2: Move Command (M) - Complete This First
 #### Empty → Single → Multiple
 - Empty command returns "0:0:N" (foundation from Phase 1)
-- [ ] Single "M" command moves north to "0:1:N"
+- [x] Single "M" command moves north to "0:1:N"
 - [ ] "MM" moves twice north to "0:2:N"
 - [ ] "MMM" moves three times north to "0:3:N"
 - [ ] "MMMMMMMMMM" wraps around to "0:0:N" (10 moves)

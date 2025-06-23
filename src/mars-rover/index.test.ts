@@ -9,4 +9,12 @@ describe('Mars Rover', () => {
     
     expect(result).toBe('0:0:N');
   });
+
+  it('moves north when given single M command', () => {
+    const rover = new MarsRover();
+    
+    const result = rover.execute('M');
+    
+    expect(result).toBe('0:1:N');
+  });
 });
