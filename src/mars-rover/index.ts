@@ -1,15 +1,15 @@
 export class MarsRover {
   execute(command: string): string {
-    let y = 0;
+    let yMovement = 0;
     
     for (const character of command) {
       if (character === 'M') {
-        y++;
+        yMovement++;
       }
     }
     
-    y = y % 10;
+    const yPosition = yMovement % 10;
     
-    return `0:${y}:N`;
+    return `0:${yPosition}:N`;
   }
 }
