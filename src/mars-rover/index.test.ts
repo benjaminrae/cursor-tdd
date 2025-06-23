@@ -5,7 +5,8 @@ describe('Mars Rover', () => {
   it.each([
     ['', '0:0:N'],
     ['M', '0:1:N'],
-    ['MM', '0:2:N']
+    ['MM', '0:2:N'],
+    ['MMM', '0:3:N']
   ])('executes command "%s" and returns "%s"', (command, expected) => {
     const rover = new MarsRover();
 
