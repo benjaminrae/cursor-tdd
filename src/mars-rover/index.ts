@@ -35,8 +35,7 @@ export class MarsRover {
         if (this.grid.isMovementBlocked(currentPosition, movement)) {
           return `O:${currentPosition.getX()}:${currentPosition.getY()}:${this.direction.toString()}`;
         }
-        const newMovement = new Movement(currentPosition.getX() + movement.x, currentPosition.getY() + movement.y);
-        currentPosition = this.grid.wrap(newMovement);
+        currentPosition = this.calculateNewPosition(currentPosition, movement);
       }
       if (character === "L") {
         this.direction = this.direction.rotateLeft();
@@ -47,6 +46,11 @@ export class MarsRover {
     }
 
     return `${currentPosition.getX()}:${currentPosition.getY()}:${this.direction.toString()}`;
+  }
+
+  private calculateNewPosition(currentPosition: Coordinates, movement: Movement): Coordinates {
+    const newMovement = new Movement(currentPosition.getX() + movement.x, currentPosition.getY() + movement.y);
+    return this.grid.wrap(newMovement);
   }
 
 }
