@@ -76,3 +76,5 @@ Each kata has its own README with detailed specifications and test checklists.
 ## Commit Guidelines
 
 - Use conventional commits
+- Commit when the test passes and the case has been marked as complete in the list of cases
+- Commit after each small refactor making sure the tests are still in green
