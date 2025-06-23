@@ -72,3 +72,7 @@ This project enforces STRICT TDD methodology. The `.cursor/rules/tdd.md` file co
 2. **mars-rover**: Robot navigation simulation (not yet implemented)
 
 Each kata has its own README with detailed specifications and test checklists.
+
+## Commit Guidelines
+
+- Use conventional commits
