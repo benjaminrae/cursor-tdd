@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { Event } from './event';
 import { EventBag } from './event-bag';
 import { MarsRoverBuilder } from './mars-rover.builder';
 import { Coordinates } from './coordinates';
+import { RoverMovedForward, RoverRotatedLeft, RoverRotatedRight } from './events';
 
 describe('Mars Rover', () => {
   describe('Movement Events', () => {
@@ -17,7 +17,7 @@ describe('Mars Rover', () => {
       const events = eventBag.release();
       expect(events).toHaveLength(1);
       expect(events[0].type).toBe('RoverMovedForward');
-      expect(events).toContainEqual(new Event('RoverMovedForward'));
+      expect(events).toContainEqual(new RoverMovedForward());
     });
 
     it('does not emit RoverMovedForward event when movement is blocked', () => {
@@ -45,7 +45,7 @@ describe('Mars Rover', () => {
 
       const events = eventBag.release();
       expect(events).toHaveLength(1);
-      expect(events).toContainEqual(new Event('RoverRotatedLeft'));
+      expect(events).toContainEqual(new RoverRotatedLeft());
     });
 
     it('emits RoverRotatedRight event when right rotation command executed', () => {
@@ -58,7 +58,7 @@ describe('Mars Rover', () => {
 
       const events = eventBag.release();
       expect(events).toHaveLength(1);
-      expect(events).toContainEqual(new Event('RoverRotatedRight'));
+      expect(events).toContainEqual(new RoverRotatedRight());
     });
   });
 });

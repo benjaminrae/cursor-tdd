@@ -1,7 +1,7 @@
 import { GPS } from "./gps";
 import { Compass } from "./compass";
 import { EventBag } from "./event-bag";
-import { Event } from "./event";
+import { RoverMovedForward, RoverRotatedLeft, RoverRotatedRight } from "./events";
 
 
 export class MarsRover {
@@ -14,15 +14,15 @@ export class MarsRover {
       if (!this.gps.move(movement)) {
         return this.getObstacleStatus();
       }
-      this.eventBag.record(new Event('RoverMovedForward'));
+      this.eventBag.record(new RoverMovedForward());
     }
     if (command === "L") {
       this.compass = this.compass.rotateLeft();
-      this.eventBag.record(new Event('RoverRotatedLeft'));
+      this.eventBag.record(new RoverRotatedLeft());
     }
     if (command === "R") {
       this.compass = this.compass.rotateRight();
-      this.eventBag.record(new Event('RoverRotatedRight'));
+      this.eventBag.record(new RoverRotatedRight());
     }
     return null;
   }
@@ -33,8 +33,7 @@ export class MarsRover {
   }
 
   private getObstacleStatus(): string {
-    const currentPosition = this.gps.getCurrentPosition();
-    return `O:${currentPosition.getX()}:${currentPosition.getY()}:${this.compass.toString()}`;
+    return `O:${this.getStatus()}`;
   }
 
 
