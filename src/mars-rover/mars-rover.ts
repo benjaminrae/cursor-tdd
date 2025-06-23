@@ -18,6 +18,7 @@ export class MarsRover {
     }
     if (command === "L") {
       this.compass = this.compass.rotateLeft();
+      this.eventBag.record(new Event('RoverRotatedLeft'));
     }
     if (command === "R") {
       this.compass = this.compass.rotateRight();

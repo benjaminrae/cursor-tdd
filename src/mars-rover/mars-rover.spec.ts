@@ -33,4 +33,19 @@ describe('Mars Rover', () => {
       expect(events).toHaveLength(0);
     });
   });
+
+  describe('Rotation Events', () => {
+    it('emits RoverRotatedLeft event when left rotation command executed', () => {
+      const eventBag = new EventBag();
+      const rover = new MarsRoverBuilder()
+        .withEventBag(eventBag)
+        .build();
+
+      rover.execute('L');
+
+      const events = eventBag.release();
+      expect(events).toHaveLength(1);
+      expect(events).toContainEqual(new Event('RoverRotatedLeft'));
+    });
+  });
 });
