@@ -61,4 +61,18 @@ describe('Mars Rover', () => {
       expect(events).toContainEqual(new RoverRotatedRight());
     });
   });
+
+  describe('Edge Cases', () => {
+    it('does not emit any event when unknown command is executed', () => {
+      const eventBag = new EventBag();
+      const rover = new MarsRoverBuilder()
+        .withEventBag(eventBag)
+        .build();
+
+      rover.execute('X');
+
+      const events = eventBag.release();
+      expect(events).toHaveLength(0);
+    });
+  });
 });
