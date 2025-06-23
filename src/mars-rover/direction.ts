@@ -66,7 +66,7 @@ export class South extends Direction {
   }
 
   getMovement(): Movement {
-    throw new Error('Not implemented');
+    return new Movement(0, -1);
   }
 }
 

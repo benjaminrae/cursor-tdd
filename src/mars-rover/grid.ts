@@ -6,7 +6,7 @@ export class Grid {
   constructor(private size: number = GRID_SIZE) {}
 
   private wrapY(yMovement: number): number {
-    return yMovement % this.size;
+    return (yMovement + this.size) % this.size;
   }
 
   private wrapX(xMovement: number): number {
