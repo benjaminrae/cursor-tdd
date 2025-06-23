@@ -18,7 +18,7 @@ Develop an API that moves rovers around on a plateau on Mars. The plateau is rep
 ## Test Cases (Prioritized by TDD Rules)
 
 ### Phase 1: Empty/Zero Cases (Start Here)
-- [ ] Empty command returns initial position "0:0:N"
+- [x] Empty command returns initial position "0:0:N"
 
 ### Phase 2: Move Command (M) - Complete This First
 #### Empty → Single → Multiple
