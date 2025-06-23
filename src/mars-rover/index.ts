@@ -1,17 +1,23 @@
 import { Grid } from "./grid";
 import { Direction } from "./direction";
 
+
 export class MarsRover {
   constructor(private grid: Grid, private direction: Direction) {
   }
 
   execute(command: string): string {
+    let xMovement = 0;
     let yMovement = 0;
     let currentDirection = this.direction;
 
     for (const character of command) {
       if (character === "M") {
-        yMovement = this.moveForward(yMovement);
+        if (currentDirection.toString() === "E") {
+          xMovement++;
+        } else {
+          yMovement = this.moveForward(yMovement);
+        }
       }
       if (character === "L") {
         currentDirection = currentDirection.rotateLeft();
@@ -23,7 +29,7 @@ export class MarsRover {
 
     const yPosition = this.grid.wrapY(yMovement);
 
-    return `0:${yPosition}:${currentDirection.toString()}`;
+    return `${xMovement}:${yPosition}:${currentDirection.toString()}`;
   }
 
   private moveForward(currentYMovement: number): number {

@@ -49,4 +49,16 @@ describe('Mars Rover', () => {
       expect(result).toBe(expected);
     });
   });
+
+  describe('Movement with direction changes', () => {
+    it.each([
+      ['RM', '1:0:E']
+    ])('executes "%s" and returns "%s"', (command, expected) => {
+      const rover = new MarsRover(new Grid(), new North());
+
+      const result = rover.execute(command);
+
+      expect(result).toBe(expected);
+    });
+  });
 });
