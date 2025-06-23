@@ -1,11 +1,14 @@
 export class MarsRover {
   execute(command: string): string {
+    let y = 0;
+    
     if (command === 'MM') {
-      return '0:2:N';
+      y = 2;
     }
     if (command === 'M') {
-      return '0:1:N';
+      y = 1;
     }
-    return '0:0:N';
+    
+    return `0:${y}:N`;
   }
 }
