@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { MarsRover } from './index';
+import { MarsRover } from './mars-rover';
 import { MissionControl } from './mission-control';
 import { Coordinates } from './coordinates';
 import { Map } from './map';

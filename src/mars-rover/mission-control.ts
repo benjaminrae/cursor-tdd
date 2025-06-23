@@ -1,4 +1,4 @@
-import { MarsRover } from "./index";
+import { MarsRover } from "./mars-rover";
 
 export class MissionControl {
   constructor(private rover: MarsRover) {}
