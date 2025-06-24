@@ -1,10 +1,10 @@
 import { Movement } from "./movement";
 
-export abstract class Compass {
+export abstract class Heading {
   constructor(private symbol: string) {}
 
-  abstract rotateLeft(): Compass;
-  abstract rotateRight(): Compass;
+  abstract rotateLeft(): Heading;
+  abstract rotateRight(): Heading;
   abstract getMovement(): Movement;
 
   getSymbol(): string {
@@ -16,16 +16,16 @@ export abstract class Compass {
   }
 }
 
-export class NorthHeading extends Compass {
+export class NorthHeading extends Heading {
   constructor() {
     super("N");
   }
 
-  rotateLeft(): Compass {
+  rotateLeft(): Heading {
     return new WestHeading();
   }
 
-  rotateRight(): Compass {
+  rotateRight(): Heading {
     return new EastHeading();
   }
 
@@ -34,16 +34,16 @@ export class NorthHeading extends Compass {
   }
 }
 
-export class EastHeading extends Compass {
+export class EastHeading extends Heading {
   constructor() {
     super("E");
   }
 
-  rotateLeft(): Compass {
+  rotateLeft(): Heading {
     return new NorthHeading();
   }
 
-  rotateRight(): Compass {
+  rotateRight(): Heading {
     return new SouthHeading();
   }
 
@@ -52,16 +52,16 @@ export class EastHeading extends Compass {
   }
 }
 
-export class SouthHeading extends Compass {
+export class SouthHeading extends Heading {
   constructor() {
     super("S");
   }
 
-  rotateLeft(): Compass {
+  rotateLeft(): Heading {
     return new EastHeading();
   }
 
-  rotateRight(): Compass {
+  rotateRight(): Heading {
     return new WestHeading();
   }
 
@@ -70,20 +70,48 @@ export class SouthHeading extends Compass {
   }
 }
 
-export class WestHeading extends Compass {
+export class WestHeading extends Heading {
   constructor() {
     super("W");
   }
 
-  rotateLeft(): Compass {
+  rotateLeft(): Heading {
     return new SouthHeading();
   }
 
-  rotateRight(): Compass {
+  rotateRight(): Heading {
     return new NorthHeading();
   }
 
   getMovement(): Movement {
     return new Movement(-1, 0);
+  }
+}
+
+export class Compass {
+  constructor(private heading: Heading) {}
+
+  rotateLeft(): void {
+    this.heading = this.heading.rotateLeft();
+  }
+
+  rotateRight(): void {
+    this.heading = this.heading.rotateRight();
+  }
+
+  getSymbol(): string {
+    return this.heading.getSymbol();
+  }
+
+  getHeading(): Heading {
+    return this.heading;
+  }
+
+  getMovement(): Movement {
+    return this.heading.getMovement();
+  }
+
+  read(): string {
+    return this.heading.getSymbol();
   }
 }
