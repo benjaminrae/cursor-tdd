@@ -1,19 +1,7 @@
 import { Event } from './event';
 
-export class RoverMovedForward extends Event {
-  constructor() {
-    super('RoverMovedForward');
-  }
-}
+export class RoverMovedForward extends Event {}
 
-export class RoverRotatedLeft extends Event {
-  constructor() {
-    super('RoverRotatedLeft');
-  }
-}
+export class RoverRotatedLeft extends Event {}
 
-export class RoverRotatedRight extends Event {
-  constructor() {
-    super('RoverRotatedRight');
-  }
-}
+export class RoverRotatedRight extends Event {}
