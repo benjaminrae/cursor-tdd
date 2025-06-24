@@ -12,7 +12,7 @@ export class MarsRover {
   execute(command: string): string | null {
     if (command === "M") {
       const movement = this.compass.getMovement();
-      if (!this.gps.move(movement)) {
+      if (this.isMovementBlocked(movement)) {
         return this.getObstacleStatus();
       }
       this.eventBag.record(new RoverMovedForward());
@@ -33,6 +33,11 @@ export class MarsRover {
 
   private getObstacleStatus(): string {
     return `O:${this.getStatus()}`;
+  }
+
+  private isMovementBlocked(movement: Movement): boolean {
+    const currentPosition = this.gps.getCurrentPosition();
+    return this.gps.isBlocked(currentPosition, movement);
   }
 
   releaseEvents(): Event[] {

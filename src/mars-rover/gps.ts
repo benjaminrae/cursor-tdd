@@ -19,4 +19,8 @@ export class GPS {
   getCurrentPosition(): Coordinates {
     return this.currentPosition;
   }
+
+  isBlocked(from: Coordinates, movement: Movement): boolean {
+    return this.map.isMovementBlocked(from, movement);
+  }
 }
