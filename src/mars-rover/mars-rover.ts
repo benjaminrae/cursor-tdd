@@ -3,6 +3,7 @@ import { Compass } from "./compass";
 import { EventBag } from "./event-bag";
 import { Event } from "./event";
 import { RoverMovedForward, RoverRotatedLeft, RoverRotatedRight } from "./events";
+import { COMMANDS } from "./commands";
 
 
 export class MarsRover {
@@ -10,17 +11,17 @@ export class MarsRover {
   }
 
   execute(command: string): string | null {
-    if (command === "M") {
+    if (command === COMMANDS.MOVE) {
       const movement = this.compass.getMovement();
       if (this.isMovementBlocked(movement)) {
         return this.getObstacleStatus();
       }
       this.eventBag.record(new RoverMovedForward());
     }
-    if (command === "L") {
+    if (command === COMMANDS.ROTATE_LEFT) {
       this.eventBag.record(new RoverRotatedLeft());
     }
-    if (command === "R") {
+    if (command === COMMANDS.ROTATE_RIGHT) {
       this.eventBag.record(new RoverRotatedRight());
     }
     return null;
