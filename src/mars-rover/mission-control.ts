@@ -10,10 +10,10 @@ export class MissionControl {
       if (result) {
         return result;
       }
+      
+      const events = this.rover.releaseEvents();
+      this.eventDispatcher.dispatch(events);
     }
-    
-    const events = this.rover.releaseEvents();
-    this.eventDispatcher.dispatch(events);
     
     return this.rover.getStatus();
   }

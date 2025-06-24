@@ -1,12 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { MissionControl } from './mission-control';
 import { Coordinates } from './coordinates';
-import { MarsRoverBuilder } from './mars-rover.builder';
-import { InMemoryEventDispatcher } from './in-memory-event-dispatcher';
-import { RoverRotatedLeftEventHandler } from './rover-rotated-left-event-handler';
-import { RoverRotatedRightEventHandler } from './rover-rotated-right-event-handler';
-import { RoverRotatedLeft, RoverRotatedRight } from './events';
-import { Compass, NorthHeading } from './compass';
+import { MissionControlConfigurator } from './mission-control-configurator';
+import { GPS } from './gps';
+import { Map } from './map';
 
 describe('Mission Control', () => {
   describe('Move commands', () => {
@@ -17,9 +13,7 @@ describe('Mission Control', () => {
       ['MMM', '0:3:N'],
       ['MMMMMMMMMM', '0:0:N']
     ])('sends command "%s" and returns "%s"', (command, expected) => {
-      const rover = new MarsRoverBuilder().build();
-      const eventDispatcher = new InMemoryEventDispatcher();
-      const missionControl = new MissionControl(rover, eventDispatcher);
+      const missionControl = MissionControlConfigurator.create();
 
       const result = missionControl.sendCommand(command);
 
@@ -34,9 +28,7 @@ describe('Mission Control', () => {
       ['LLL', '0:0:E'],
       ['LLLL', '0:0:N']
     ])('sends command "%s" and returns "%s"', (command, expected) => {
-      const rover = new MarsRoverBuilder().build();
-      const eventDispatcher = new InMemoryEventDispatcher();
-      const missionControl = new MissionControl(rover, eventDispatcher);
+      const missionControl = MissionControlConfigurator.create();
 
       const result = missionControl.sendCommand(command);
 
@@ -51,9 +43,7 @@ describe('Mission Control', () => {
       ['RRR', '0:0:W'],
       ['RRRR', '0:0:N']
     ])('sends command "%s" and returns "%s"', (command, expected) => {
-      const rover = new MarsRoverBuilder().build();
-      const eventDispatcher = new InMemoryEventDispatcher();
-      const missionControl = new MissionControl(rover, eventDispatcher);
+      const missionControl = MissionControlConfigurator.create();
 
       const result = missionControl.sendCommand(command);
 
@@ -68,9 +58,7 @@ describe('Mission Control', () => {
       ['RRM', '0:9:S'],
       ['LLM', '0:9:S']
     ])('sends command "%s" and returns "%s"', (command, expected) => {
-      const rover = new MarsRoverBuilder().build();
-      const eventDispatcher = new InMemoryEventDispatcher();
-      const missionControl = new MissionControl(rover, eventDispatcher);
+      const missionControl = MissionControlConfigurator.create();
 
       const result = missionControl.sendCommand(command);
 
@@ -83,9 +71,7 @@ describe('Mission Control', () => {
       ['MMRMMLM', '2:3:N'],
       ['RMMLM', '2:1:N']
     ])('sends command "%s" and returns "%s"', (command, expected) => {
-      const rover = new MarsRoverBuilder().build();
-      const eventDispatcher = new InMemoryEventDispatcher();
-      const missionControl = new MissionControl(rover, eventDispatcher);
+      const missionControl = MissionControlConfigurator.create();
 
       const result = missionControl.sendCommand(command);
 
@@ -95,11 +81,8 @@ describe('Mission Control', () => {
 
   describe('Obstacles', () => {
     it('sends command "MMMM" and returns "O:0:2:N" when obstacle at (0,3)', () => {
-      const rover = new MarsRoverBuilder()
-        .withObstacles([new Coordinates(0, 3)])
-        .build();
-      const eventDispatcher = new InMemoryEventDispatcher();
-      const missionControl = new MissionControl(rover, eventDispatcher);
+      const gps = new GPS(new Map([new Coordinates(0, 3)]));
+      const missionControl = MissionControlConfigurator.create(gps);
 
       const result = missionControl.sendCommand('MMMM');
 
@@ -107,11 +90,8 @@ describe('Mission Control', () => {
     });
 
     it('sends command "RM" and returns "O:0:0:E" when obstacle at (1,0)', () => {
-      const rover = new MarsRoverBuilder()
-        .withObstacles([new Coordinates(1, 0)])
-        .build();
-      const eventDispatcher = new InMemoryEventDispatcher();
-      const missionControl = new MissionControl(rover, eventDispatcher);
+      const gps = new GPS(new Map([new Coordinates(1, 0)]));
+      const missionControl = MissionControlConfigurator.create(gps);
 
       const result = missionControl.sendCommand('RM');
 

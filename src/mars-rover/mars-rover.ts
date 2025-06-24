@@ -18,11 +18,9 @@ export class MarsRover {
       this.eventBag.record(new RoverMovedForward());
     }
     if (command === "L") {
-      this.compass.rotateLeft();
       this.eventBag.record(new RoverRotatedLeft());
     }
     if (command === "R") {
-      this.compass.rotateRight();
       this.eventBag.record(new RoverRotatedRight());
     }
     return null;
