@@ -11,6 +11,6 @@ describe('RoverRotatedRightEventHandler', () => {
 
     handler.handle(event);
 
-    expect(compass.getSymbol()).toBe('E');
+    expect(compass.read()).toBe('E');
   });
 });

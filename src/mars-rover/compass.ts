@@ -99,10 +99,6 @@ export class Compass {
     this.heading = this.heading.rotateRight();
   }
 
-  getSymbol(): string {
-    return this.heading.getSymbol();
-  }
-
   getHeading(): Heading {
     return this.heading;
   }
