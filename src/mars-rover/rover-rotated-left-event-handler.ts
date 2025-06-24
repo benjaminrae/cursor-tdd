@@ -2,10 +2,10 @@ import { EventHandler } from './event-handler';
 import { RoverRotatedLeft } from './events';
 import { Compass } from './compass';
 
-export class RoverRotatedLeftEventHandler implements EventHandler<RoverRotatedLeft, Compass> {
+export class RoverRotatedLeftEventHandler implements EventHandler<RoverRotatedLeft> {
   constructor(private compass: Compass) {}
 
-  handle(event: RoverRotatedLeft): Compass { // eslint-disable-line @typescript-eslint/no-unused-vars
-    return this.compass.rotateLeft();
+  handle(event: RoverRotatedLeft): void { // eslint-disable-line @typescript-eslint/no-unused-vars
+    this.compass.rotateLeft();
   }
 }
