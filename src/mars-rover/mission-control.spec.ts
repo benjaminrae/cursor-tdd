@@ -2,6 +2,11 @@ import { describe, it, expect } from 'vitest';
 import { MissionControl } from './mission-control';
 import { Coordinates } from './coordinates';
 import { MarsRoverBuilder } from './mars-rover.builder';
+import { InMemoryEventDispatcher } from './event-dispatcher';
+import { RoverRotatedLeftEventHandler } from './rover-rotated-left-event-handler';
+import { RoverRotatedRightEventHandler } from './rover-rotated-right-event-handler';
+import { RoverRotatedLeft, RoverRotatedRight } from './events';
+import { Compass, NorthHeading } from './compass';
 
 describe('Mission Control', () => {
   describe('Move commands', () => {
@@ -13,7 +18,8 @@ describe('Mission Control', () => {
       ['MMMMMMMMMM', '0:0:N']
     ])('sends command "%s" and returns "%s"', (command, expected) => {
       const rover = new MarsRoverBuilder().build();
-      const missionControl = new MissionControl(rover);
+      const eventDispatcher = new InMemoryEventDispatcher();
+      const missionControl = new MissionControl(rover, eventDispatcher);
 
       const result = missionControl.sendCommand(command);
 
@@ -29,7 +35,8 @@ describe('Mission Control', () => {
       ['LLLL', '0:0:N']
     ])('sends command "%s" and returns "%s"', (command, expected) => {
       const rover = new MarsRoverBuilder().build();
-      const missionControl = new MissionControl(rover);
+      const eventDispatcher = new InMemoryEventDispatcher();
+      const missionControl = new MissionControl(rover, eventDispatcher);
 
       const result = missionControl.sendCommand(command);
 
@@ -45,7 +52,8 @@ describe('Mission Control', () => {
       ['RRRR', '0:0:N']
     ])('sends command "%s" and returns "%s"', (command, expected) => {
       const rover = new MarsRoverBuilder().build();
-      const missionControl = new MissionControl(rover);
+      const eventDispatcher = new InMemoryEventDispatcher();
+      const missionControl = new MissionControl(rover, eventDispatcher);
 
       const result = missionControl.sendCommand(command);
 
@@ -61,7 +69,8 @@ describe('Mission Control', () => {
       ['LLM', '0:9:S']
     ])('sends command "%s" and returns "%s"', (command, expected) => {
       const rover = new MarsRoverBuilder().build();
-      const missionControl = new MissionControl(rover);
+      const eventDispatcher = new InMemoryEventDispatcher();
+      const missionControl = new MissionControl(rover, eventDispatcher);
 
       const result = missionControl.sendCommand(command);
 
@@ -75,7 +84,8 @@ describe('Mission Control', () => {
       ['RMMLM', '2:1:N']
     ])('sends command "%s" and returns "%s"', (command, expected) => {
       const rover = new MarsRoverBuilder().build();
-      const missionControl = new MissionControl(rover);
+      const eventDispatcher = new InMemoryEventDispatcher();
+      const missionControl = new MissionControl(rover, eventDispatcher);
 
       const result = missionControl.sendCommand(command);
 
@@ -88,7 +98,8 @@ describe('Mission Control', () => {
       const rover = new MarsRoverBuilder()
         .withObstacles([new Coordinates(0, 3)])
         .build();
-      const missionControl = new MissionControl(rover);
+      const eventDispatcher = new InMemoryEventDispatcher();
+      const missionControl = new MissionControl(rover, eventDispatcher);
 
       const result = missionControl.sendCommand('MMMM');
 
@@ -99,7 +110,8 @@ describe('Mission Control', () => {
       const rover = new MarsRoverBuilder()
         .withObstacles([new Coordinates(1, 0)])
         .build();
-      const missionControl = new MissionControl(rover);
+      const eventDispatcher = new InMemoryEventDispatcher();
+      const missionControl = new MissionControl(rover, eventDispatcher);
 
       const result = missionControl.sendCommand('RM');
 

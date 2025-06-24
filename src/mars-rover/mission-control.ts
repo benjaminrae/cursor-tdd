@@ -1,7 +1,8 @@
 import { MarsRover } from "./mars-rover";
+import { EventDispatcher } from "./event-dispatcher";
 
 export class MissionControl {
-  constructor(private rover: MarsRover) {}
+  constructor(private rover: MarsRover, private eventDispatcher: EventDispatcher) {}
 
   sendCommand(command: string): string {
     for (const character of command) {
@@ -10,6 +11,10 @@ export class MissionControl {
         return result;
       }
     }
+    
+    const events = this.rover.releaseEvents();
+    this.eventDispatcher.dispatch(events);
+    
     return this.rover.getStatus();
   }
 }
