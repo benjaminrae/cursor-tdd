@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { InMemoryEventDispatcher } from './event-dispatcher';
+import { InMemoryEventDispatcher } from './in-memory-event-dispatcher';
 import { RoverRotatedLeft, RoverRotatedRight } from './events';
 import { EventHandler } from './event-handler';
 

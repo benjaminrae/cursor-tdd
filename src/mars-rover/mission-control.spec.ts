@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { MissionControl } from './mission-control';
 import { Coordinates } from './coordinates';
 import { MarsRoverBuilder } from './mars-rover.builder';
-import { InMemoryEventDispatcher } from './event-dispatcher';
+import { InMemoryEventDispatcher } from './in-memory-event-dispatcher';
 import { RoverRotatedLeftEventHandler } from './rover-rotated-left-event-handler';
 import { RoverRotatedRightEventHandler } from './rover-rotated-right-event-handler';
 import { RoverRotatedLeft, RoverRotatedRight } from './events';
