@@ -7,7 +7,7 @@ import { Coordinates } from './coordinates';
 
 export class MarsRoverBuilder {
   private map: Map = new Map();
-  private compass: Compass = new NorthHeading();
+  private compass: Compass = new Compass(new NorthHeading());
   private eventBag: EventBag = new EventBag();
 
   withObstacles(obstacles: Coordinates[]): MarsRoverBuilder {
