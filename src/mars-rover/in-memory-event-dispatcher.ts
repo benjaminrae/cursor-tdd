@@ -3,7 +3,7 @@ import { EventHandler } from './event-handler';
 import { EventDispatcher } from './event-dispatcher';
 
 export class InMemoryEventDispatcher implements EventDispatcher {
-  private handlers = new Map<string, EventHandler<any>>();
+  private handlers = new Map<string, EventHandler<Event>>();
 
   register<T extends Event>(eventType: new() => T, handler: EventHandler<T>): void {
     const eventName = eventType.name;
